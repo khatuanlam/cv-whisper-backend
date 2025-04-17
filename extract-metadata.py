@@ -36,7 +36,14 @@ def extract_metadata_with_openai(text):
             max_tokens=500,
             temperature=0.2
         )
-        return response.choices[0].message.content.strip()
+        content = response.choices[0].message.content.strip()
+        # Ensure always return a dict, not raw string
+        import json
+        try:
+            metadata = json.loads(content)
+        except Exception:
+            metadata = content
+        return metadata
     except Exception as e:
         return {"error": str(e)}
 
@@ -51,7 +58,7 @@ def extract_metadata():
         text = extract_text_pdfplumber(file_bytes)
         # Use OpenAI to extract structured metadata
         metadata = extract_metadata_with_openai(text)
-        return jsonify({'metadata': metadata})
+        return jsonify({'metadata': metadata, 'fullText': text})
     except Exception as e:
         import traceback
         print('--- Exception in /api/extract-metadata ---')

@@ -2,7 +2,4 @@ pdfplumber
 openai
 gunicorn
 flask
-<<<<<<< HEAD
 flask-cors
-=======
->>>>>>> 36c37bbf71a06099d88d0269d72167dcfae54504
