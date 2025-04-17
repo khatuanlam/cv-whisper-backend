@@ -1,0 +1,3 @@
+# Ignore everything except serverless functions
+!extract_text.py
+!extract_metadata.py

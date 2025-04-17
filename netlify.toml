@@ -1,0 +1,11 @@
+[build]
+  functions = "."
+  publish = "public"
+
+[functions]
+  node_bundler = "esbuild"
+  included_files = ["*.py", "requirements.txt"]
+  external_node_modules = []
+
+[dev]
+  autoLaunch = false
