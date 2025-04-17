@@ -3,11 +3,13 @@ import pdfplumber
 import openai
 import io
 import os
+from flask_cors import CORS
 
 # Lấy OpenAI API key từ biến môi trường
 openai.api_key = os.getenv("VITE_OPENAI_API_KEY")
 
 app = Flask(__name__)
+CORS(app)
 
 def extract_text_pdfplumber(file_bytes):
     text = ""

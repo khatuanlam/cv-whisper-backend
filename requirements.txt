@@ -1,2 +1,5 @@
 pdfplumber
 openai
+gunicorn
+flask
+flask-cors
